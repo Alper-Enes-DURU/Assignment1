@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Accounts" icon-name="custom:custom14">
+    <div class="c-container">
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Field 1">Account Name</p>
+                    <template for:each={accounts} for:item="account"> 
+                        <li key={account.Id}>
+                        <label>{account.Name}</label>
+                        </li>
+                    </template>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Field2 (3)">Account Industry</p>
+                        <template for:each={accounts} for:item="account"> 
+                            <li key={account.Id}>
+                            {account.Industry}
+                            </li>
+                        </template> 
+                    
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Field 3">Account Sector</p>
+                        <template for:each={accounts} for:item="account"> 
+                            <li key={account.Id}>
+                            {account.Sector}
+                            </li>
+                        </template> 
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="Field 4">Account Phone</p>
+                        <template for:each={accounts} for:item="account"> 
+                            <li key={account.Id}>
+                            {account.Phone}
+                            </li>
+                        </template> 
+                    
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    </lightning-card>
+</template>
