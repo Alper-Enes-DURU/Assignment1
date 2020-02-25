@@ -1,11 +1,41 @@
+<!--
+    <template>
+        <lightning-card title="LdsCreateRecord" icon-name="standard:record">
+        <div class="slds-m-around_medium">
+            <lightning-input name='name' label="Name" onchange={handleNameChange} class="slds-m-bottom_x-small"></lightning-input>
+                <lightning-input name="sector" label="Sector" onchange={handleNameChange}></lightning-input>
+            <lightning-input name="industry" label="Industry" onchange={handleNameChange}></lightning-input>
+            <lightning-input name='phone' type="tel" label="Phone Number" value="343-343-3434" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onchange={handleNameChange}></lightning-input>
+            <lightning-button label="Create Account" variant="brand" onclick={createAccount}></lightning-button>
+        </div>
+        </lightning-card>
+    </template> 
+-->
 <template>
-    <lightning-card title="LdsCreateRecord" icon-name="standard:record">
-       <div class="slds-m-around_medium">
-           <lightning-input label="Name" onchange={handleNameChange} class="slds-m-bottom_x-small"></lightning-input>
-           <lightning-input label="Sector"></lightning-input>
-           <lightning-input label="Industry"></lightning-input>
-           <lightning-input type="tel" label="Phone Number" value="343-343-3434" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></lightning-input>
-           <lightning-button label="Create Account" variant="brand" onclick={createAccount}></lightning-button>
-       </div>
+    <lightning-card title="Create Account Record" icon-name="standard:account">
+        <div style="margin-left: 6%" if:true={error}>
+            <lightning-badge label={error} style="color: red;"></lightning-badge>
+        </div>
+
+        <template if:true={accRecord}>
+            <div class="slds-m-around--xx-large">
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <lightning-input label="Enter Account Name" name="accName" required="required" type="text" value={accRecord.Name} onchange={handleNameChange}></lightning-input>
+                    </div>
+                    <div class="form-group">
+                        <lightning-input label="Enter Phone Number" name="accPhone" type="text" value={accRecord.Phone} onchange={handlePhoneChange}></lightning-input>
+                    </div>
+                    <div class="form-group">
+                        <lightning-input label="Enter Account Sector" name="accEmail" required="required" type="text" value={accRecord.Sector} onchange={handleSectorChange}></lightning-input>
+                    </div>
+                    <div class="form-group">
+                        <lightning-input label="Enter Industry" name="accEmail" type="text" value={accRecord.Industry} onchange={handleIndustryChange}></lightning-input>
+                    </div>
+                </div>
+                <br/>
+                <lightning-button label="Submit" onclick={handleSave} variant="brand"></lightning-button>
+            </div>
+        </template>
     </lightning-card>
-</template> 
+</template>
