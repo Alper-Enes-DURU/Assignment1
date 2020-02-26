@@ -1,63 +1,49 @@
-// wireGetRecordDynamicContact.js
-/*
-import { LightningElement, api, wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement, track } from 'lwc';
 
-const FIELDS = [
-    'Account.Name',
-    'Account.Title',
-    'Account.Phone',
-    'Account.Email',
-];
+export default class App extends LightningElement {
+    @track accounts = [
+        {
+        Id: 1,
+        Name: 'Alper DURU',
+        Industry: 'Salesforce',
+        Sector: 'Software Developer',
+        Phone: '111-111-1111',
+        },
+    ]
+    @track accountName = "";
+    @track accountIndustry = "";
+    @track accountSector = "";
+    @track accountPhone = "";
+    @track idGenerator = 2;
 
-export default class WireGetRecordDynamicAccount extends LightningElement {
-    @api recordId;
-
-    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
-    account;
-
-    get name() {
-        return this.account.data.fields.Name.value;
-    }
-
-    get title() {
-        return this.account.data.fields.Title.value;
-    }
-
-    get phone() {
-        return this.account.data.fields.Phone.value;
-    }
-
-    get email() {
-        return this.account.data.fields.Email.value;
+handleChange(event){
+    if(event.target.label === 'Account Name'){
+        this.accountName = event.target.value;
+    }else if(event.target.label === 'Account Industry'){
+        this.accountIndustry = event.target.value;
+    }else if(event.target.label === 'Account Sector'){
+        this.accountSector = event.target.value;
+    }else if(event.target.label === 'Account Phone'){
+        this.accountPhone = event.target.value;
+        }
+}
+handleKeyPress(event){
+    var currentId = this.idGenerator;
+    if(event.keyCode === 13){
+        this.accounts.push(
+        {
+            id : currentId,
+            Name : this.accountName,
+            Industry : this.accountIndustry,
+            Sector : this.accountSector,
+            Phone : this.accountPhone
+        }
+    );
+    this.idGenerator++;
+    this.accountName = '';
+    this.accountIndustry = '';
+    this.accountSector = '';
+    this.accountPhone = '';
+        }
     }
 }
-*/
-import { LightningElement } from 'lwc';
-
-export default class Accounts extends LightningElement {
-    accounts = [
-        {
-            Id: 1,
-            Name: 'Amy Taylor',
-            Sector: 'VP of Engineering',
-            Industry: 'a',
-            Phone: '1',
-        },
-        {
-            Id: 2,
-            Name: 'Michael Jones',
-            Sector: 'VP of Sales',
-            Industry: 'a',
-            Phone: '1',
-        },
-        {
-            Id: 3,
-            Name: 'Jennifer Wu',
-            Sector: 'CEO',
-            Industry: 'a',
-            Phone: '1',
-        },
-    ];
-}
-

@@ -1,51 +1,58 @@
 <template>
-    <lightning-card title="Accounts" icon-name="custom:custom14">
     <div class="c-container">
+        <lightning-card title="Account Details" icon-name="action:add_contact">
+
         <lightning-layout>
             <lightning-layout-item padding="around-small">
                 <div class="header-column">
                     <p class="field-title" title="Field 1">Account Name</p>
                     <template for:each={accounts} for:item="account"> 
-                        <li key={account.Id}>
-                        <label>{account.Name}</label>
+                        <li  key={account.id}>    
+                            {account.Name}
                         </li>
-                    </template>
+                        </template>
                 </div>
             </lightning-layout-item>
             <lightning-layout-item padding="around-small">
                 <div class="header-column">
-                    <p class="field-title" title="Field2 (3)">Account Industry</p>
-                        <template for:each={accounts} for:item="account"> 
-                            <li key={account.Id}>
+                    <p class="field-title" title="Field 2">Account Industry</p>
+                    <template for:each={accounts} for:item="account"> 
+                        <li  key={account.id}>    
                             {account.Industry}
-                            </li>
-                        </template> 
-                    
+                        </li>
+                        </template>
                 </div>
             </lightning-layout-item>
             <lightning-layout-item padding="around-small">
                 <div class="header-column">
                     <p class="field-title" title="Field 3">Account Sector</p>
-                        <template for:each={accounts} for:item="account"> 
-                            <li key={account.Id}>
+                    <template for:each={accounts} for:item="account"> 
+                        <li  key={account.id}>    
                             {account.Sector}
-                            </li>
-                        </template> 
+                        </li>
+                        </template>
                 </div>
-            </lightning-layout-item>
+                </lightning-layout-item>
             <lightning-layout-item padding="around-small">
                 <div class="header-column">
                     <p class="field-title" title="Field 4">Account Phone</p>
-                        <template for:each={accounts} for:item="account"> 
-                            <li key={account.Id}>
+                    <template for:each={accounts} for:item="account"> 
+                        <li  key={account.id}>    
                             {account.Phone}
-                            </li>
-                        </template> 
-                    
+                        </li>
+                        </template>
                 </div>
             </lightning-layout-item>
         </lightning-layout>
+        </lightning-card>
+        <lightning-card>
+            <div onkeypress={handleKeyPress}>
+                <lightning-input label="Account Name" onchange={handleChange} value={accountName}></lightning-input>
+                <lightning-input label="Account Industry" onchange={handleChange} value={accountIndustry}></lightning-input>
+                <lightning-input label="Account Sector" onchange={handleChange} value={accountSector}></lightning-input>
+                <lightning-input label="Account Phone" onchange={handleChange} value={accountPhone}></lightning-input>
+            </div>  
+        </lightning-card>
     </div>
-    </lightning-card>
-</template>
-
+ </template>
+ 
