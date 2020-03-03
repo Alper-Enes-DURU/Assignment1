@@ -1,0 +1,16 @@
+<apex:page Controller="MyPageController" showHeader="true" sidebar="true">
+    <apex:form id="apForm">
+        <apex:pageBlock id="accountPlanEdit">
+            <apex:pageBlockSection id="globalAddress">
+               <apex:inputText label="Enter your name:" id="txt1" />
+               <apex:inputText label="Enter the Document ID:" id="txt2" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+	<apex:image url='{!imageUrl}' />
+    <script type="text/javascript">
+        let name = document.getElementById('{!$Component.apForm.accountPlanEdit.globalAddress.txt1}').value;
+    	let documentId = document.getElementById('{!$Component.apForm.accountPlanEdit.globalAddress.txt2}').value;
+        alert(name + ' and ' + documentId);
+    </script>   
+</apex:page>
