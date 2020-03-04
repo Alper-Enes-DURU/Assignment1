@@ -5,6 +5,9 @@
         "paths": {
             "c/assignment1": [
                 "assignment1/assignment1.js"
+            ],
+            "c/customActivityTimeline": [
+                "customActivityTimeline/customActivityTimeline.js"
             ]
         }
     },
